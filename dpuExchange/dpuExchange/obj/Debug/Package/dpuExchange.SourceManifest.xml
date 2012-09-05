@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <appHostConfig path="dpuExchange" />
+  <contentPath path="C:\Users\Brett\Documents\GitHub\bookExchange\dpuExchange\dpuExchange\obj\Debug\Package\PackageTmp" />
+  <setAcl path="C:\Users\Brett\Documents\GitHub\bookExchange\dpuExchange\dpuExchange\obj\Debug\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="C:\Users\Brett\Documents\GitHub\bookExchange\dpuExchange\dpuExchange\obj\Debug\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+</sitemanifest>
