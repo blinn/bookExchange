@@ -10,8 +10,10 @@ to use a different color start by replacing all instances of
 }
 #guts
 {
+    margin-left:30px;
     margin-top:55px;
     margin-bottom:60px;
+    margin-right:30px;
 }
 #logo 
 {
@@ -316,6 +318,7 @@ div#title {
     margin: 10px;
     color: #ebd561;
     text-decoration: none;
+    float:right;
 }
 
 #logindisplay a:link {
