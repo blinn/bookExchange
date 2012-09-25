@@ -1,7 +1,0 @@
-C:\Users\Brett\Documents\GitHub\bookExchange\dpuExchange\dpuExchange\bin\dpuExchange.dll
-C:\Users\Brett\Documents\GitHub\bookExchange\dpuExchange\dpuExchange\bin\dpuExchange.pdb
-C:\Users\Brett\Documents\GitHub\bookExchange\dpuExchange\dpuExchange\bin\EntityFramework.dll
-C:\Users\Brett\Documents\GitHub\bookExchange\dpuExchange\dpuExchange\bin\EntityFramework.xml
-C:\Users\Brett\Documents\GitHub\bookExchange\dpuExchange\dpuExchange\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Brett\Documents\GitHub\bookExchange\dpuExchange\dpuExchange\obj\Debug\dpuExchange.dll
-C:\Users\Brett\Documents\GitHub\bookExchange\dpuExchange\dpuExchange\obj\Debug\dpuExchange.pdb
