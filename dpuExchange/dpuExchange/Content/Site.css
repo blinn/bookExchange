@@ -310,6 +310,19 @@ div#title {
     float: left;
     text-align: left;
 }
+.coverImg {
+    height: 200px;
+    border-width:400px;
+    border-color:#efefef;
+	-webkit-border-radius: 12px;
+     -moz-border-radius: 12px;
+          border-radius: 12px;
+}
+
+.center 
+{
+    text-align: center;
+}
 
 #logindisplay {
     font-size: 1.1em;

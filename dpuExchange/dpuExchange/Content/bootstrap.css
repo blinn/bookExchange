@@ -4256,7 +4256,7 @@ input[type="submit"].btn.btn-mini {
 
 .navbar .nav > li > a:focus,
 .navbar .nav > li > a:hover {
-  color: #333333;
+  color: white;
   text-decoration: none;
   background-color: transparent;
 }
@@ -5576,7 +5576,7 @@ a.badge:hover {
 .hero-unit {
   padding: 60px;
   margin-bottom: 30px;
-  background-color: #eeeeee;
+  background-color: #E6E6E6;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;
