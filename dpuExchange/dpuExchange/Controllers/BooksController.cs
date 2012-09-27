@@ -16,6 +16,7 @@ namespace dpuExchange.Controllers
         //
         // GET: /Books/
 
+        [Authorize]
         public ViewResult Index()
         {
             return View(db.BookItems.ToList());
@@ -24,6 +25,7 @@ namespace dpuExchange.Controllers
         //
         // GET: /Books/Details/5
 
+        [Authorize]
         public ViewResult Details(Guid id)
         {
             Books books = db.BookItems.Find(id);
@@ -33,6 +35,7 @@ namespace dpuExchange.Controllers
         //
         // GET: /Books/Create
 
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -42,11 +45,14 @@ namespace dpuExchange.Controllers
         // POST: /Books/Create
 
         [HttpPost]
+        [Authorize]
         public ActionResult Create(Books books)
         {
             if (ModelState.IsValid)
             {
                 books.BookID = Guid.NewGuid();
+                books.UserID = User.Identity.Name;
+                books.PostDate = DateTime.Now;
                 db.BookItems.Add(books);
                 db.SaveChanges();
                 return RedirectToAction("Index");  
@@ -57,7 +63,7 @@ namespace dpuExchange.Controllers
         
         //
         // GET: /Books/Edit/5
- 
+        [Authorize]
         public ActionResult Edit(Guid id)
         {
             Books books = db.BookItems.Find(id);
@@ -68,6 +74,7 @@ namespace dpuExchange.Controllers
         // POST: /Books/Edit/5
 
         [HttpPost]
+        [Authorize]
         public ActionResult Edit(Books books)
         {
             if (ModelState.IsValid)
@@ -81,7 +88,8 @@ namespace dpuExchange.Controllers
 
         //
         // GET: /Books/Delete/5
- 
+
+        [Authorize]
         public ActionResult Delete(Guid id)
         {
             Books books = db.BookItems.Find(id);
@@ -92,6 +100,7 @@ namespace dpuExchange.Controllers
         // POST: /Books/Delete/5
 
         [HttpPost, ActionName("Delete")]
+        [Authorize]
         public ActionResult DeleteConfirmed(Guid id)
         {            
             Books books = db.BookItems.Find(id);

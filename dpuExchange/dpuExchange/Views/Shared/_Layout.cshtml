@@ -17,9 +17,9 @@
                     <ul class="nav">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li class="divider-vertical"></li>
-                        <li>@Html.ActionLink("Search", "", "Home")</li>
+                        <li>@Html.ActionLink("Search", "Index", "Books")</li>
                         <li class="divider-vertical"></li>
-                        <li>@Html.ActionLink("Post", "", "Home")</li>
+                        <li>@Html.ActionLink("Post", "Create", "Books")</li>
                     </ul>
                     <div id="logindisplay">
                         @Html.Partial("_LogOnPartial")

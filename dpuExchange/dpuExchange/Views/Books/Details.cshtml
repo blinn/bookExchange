@@ -1,15 +1,14 @@
 ﻿@model dpuExchange.Models.Books
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.Title;
 }
 
-<h2>Details</h2>
 
 <fieldset>
-    <legend>Books</legend>
+    <legend>"@Model.Title" by @Model.Author</legend>
 
-    <div class="display-label">UserID</div>
+    <div class="display-label">Seller</div>
     <div class="display-field">
         @Html.DisplayFor(model => model.UserID)
     </div>
@@ -26,7 +25,7 @@
 
     <div class="display-label">Price</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Price)
+        $@Html.DisplayFor(model => model.Price)
     </div>
 
     <div class="display-label">Condition</div>
@@ -39,12 +38,17 @@
         @Html.DisplayFor(model => model.Comments)
     </div>
 
-    <div class="display-label">PostDate</div>
+    <div class="display-label">Posted On</div>
     <div class="display-field">
         @Html.DisplayFor(model => model.PostDate)
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.BookID }) |
+@if (Model.UserID == User.Identity.Name){
+            @Html.ActionLink("Edit | ", "Edit", new { id=Model.BookID })
+            @Html.ActionLink("Delete | ", "Delete", new { id = Model.BookID }) 
+  }
+  
+
     @Html.ActionLink("Back to List", "Index")
 </p>

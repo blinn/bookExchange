@@ -1,19 +1,16 @@
 ﻿@model IEnumerable<dpuExchange.Models.Books>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Search";
 }
 
-<h2>Index</h2>
+<h2>Book Listings</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table>
     <tr>
-        <th>
-            UserID
-        </th>
         <th>
             Title
         </th>
@@ -38,9 +35,6 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.UserID)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
@@ -59,9 +53,7 @@
             @Html.DisplayFor(modelItem => item.PostDate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BookID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BookID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BookID })
+            @Html.ActionLink("Details", "Details", new { id = item.BookID })
         </td>
     </tr>
 }
