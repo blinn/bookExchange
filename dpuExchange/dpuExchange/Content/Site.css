@@ -4,6 +4,12 @@ to use a different color start by replacing all instances of
 #5c87b2 with your new color.
 ----------------------------------------------------------*/
 
+.resultItem label
+{
+    font-weight:bold;
+    display:inline;
+}
+
 .right
 {
     float:right;
