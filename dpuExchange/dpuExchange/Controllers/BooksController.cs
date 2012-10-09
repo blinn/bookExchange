@@ -121,11 +121,62 @@ namespace dpuExchange.Controllers
             base.Dispose(disposing);
         }
 
+        public ActionResult searchForPrices(MainModel model)
+        {
+            HttpWebRequest request = WebRequest.Create("http://isbndb.com/api/books.xml?access_key=2PFWPRKF&results=prices&index1=isbn&value1=" + model.SearchModel.SearchForPrices) as HttpWebRequest;
+            string result = null;
+            using (HttpWebResponse resp = request.GetResponse() as HttpWebResponse)
+            {
+                StreamReader reader = new StreamReader(resp.GetResponseStream());
+                result = reader.ReadToEnd();
+            }
+            IsbnResults bookResults = new IsbnResults();
+            StringBuilder output = new StringBuilder();
+            using (XmlReader reader = XmlReader.Create(new StringReader(result)))
+            {
+                model.PriceResults = new PriceResults(); //creates model to pass data back to view
+                for (int i = 0; i < 3; i++)
+                {
+                    reader.ReadToFollowing("Price");
+                    reader.MoveToFirstAttribute();
+                    reader.MoveToNextAttribute();
+                    reader.MoveToNextAttribute();
+                    if (reader.Value == "")
+                    {
+                        break;
+                    }
+                    string storeUrl = reader.Value;
+                    reader.MoveToNextAttribute();
+                    string storeName = reader.Value;
+                    
+                    if (i == 0)
+                    {
+                        model.PriceResults.linkresult1.storeLink = storeUrl;
+                        model.PriceResults.linkresult1.storeName = storeName;
+                        model.PriceResults.numPrices = 1;
+                    }
+                    else if (i == 1)
+                    {
+                        model.PriceResults.linkresult2.storeLink = storeUrl;
+                        model.PriceResults.linkresult2.storeName = storeName;
+                        model.PriceResults.numPrices = 2;
+                    }
+                    else if (i == 2)
+                    {
+                        model.PriceResults.linkresult3.storeLink = storeUrl;
+                        model.PriceResults.linkresult3.storeName = storeName;
+                        model.PriceResults.numPrices = 3;
+                    }
+
+                }
+            }
+            return View("Create", model);
+        }
+
         public ActionResult searchForISBN(MainModel model)
         {
-            Searches search = new Searches();
-            search = model.SearchModel;
-            HttpWebRequest request = WebRequest.Create("http://isbndb.com/api/books.xml?access_key=2PFWPRKF&index1=title&value1=" + search.SearchByTitle) as HttpWebRequest;
+
+            HttpWebRequest request = WebRequest.Create("http://isbndb.com/api/books.xml?access_key=2PFWPRKF&index1=title&value1=" + model.SearchModel.SearchByTitle) as HttpWebRequest;
             string result = null;
             using (HttpWebResponse resp = request.GetResponse() as HttpWebResponse)
             {
@@ -148,7 +199,7 @@ namespace dpuExchange.Controllers
                 {
                     numResults = 4;
                 }
-                model.IsbnCollection = new IsbnResultList();
+                model.IsbnCollection = new IsbnResultList(); //creates model to pass data back to view
                 for (int i = 0; i < numResults; i++)
                 {
 
@@ -161,9 +212,6 @@ namespace dpuExchange.Controllers
                     string title = reader.ReadString();
                     reader.ReadToFollowing("AuthorsText");
                     string author = reader.ReadString();
-                      
-                    
-
                     bookResults.Isbn = isbn;
                     if (i == 0)
                     {

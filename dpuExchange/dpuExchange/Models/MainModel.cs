@@ -11,6 +11,6 @@ namespace dpuExchange.Models
         public IsbnResults IsbnResultsModel { get; set; }
         public Searches SearchModel { get; set; }
         public IsbnResultList IsbnCollection { get; set; }
-        IsbnResultList test = new IsbnResultList();
+        public PriceResults PriceResults { get; set; }
     }
 }

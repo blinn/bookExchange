@@ -76,15 +76,17 @@
                     }
                         
                         
-                        @using (Html.BeginForm())
-                        {
+                    @using (Html.BeginForm())
+                    {
 
-                            if (this.Model != null)
+                        if (this.Model != null)
+                        {
+                            if (this.Model.IsbnCollection != null)
                             {
                                 if (Model.IsbnCollection.numRecords >= 1)
                                 {
                                     <div id="resultMessage" style="color:Red">
-                                        @Html.LabelFor(m => m.IsbnCollection.numRecords, "Showing top "+ Model.IsbnCollection.numRecords+ " results")
+                                        @Html.LabelFor(m => m.IsbnCollection.numRecords, "Showing top " + Model.IsbnCollection.numRecords + " results")
                                     </div>
                                     <br />
                                     <div class="resultItem">
@@ -143,13 +145,70 @@
                                 }
                                 if (Model.IsbnCollection.numRecords == 0)
                                 {
-                                   <div style="color:Red">
+                                    <div style="color:Red">
                                         Search did not return any results. Please refine search and try again.
                                     </div>
                                 }
 
                             }
                         }
+                            
+                    }
+                    <legend>Price Lookup</legend>
+                    @using (Html.BeginForm("searchForPrices", "Books"))
+                    {
+                        @Html.TextBoxFor(m => m.SearchModel.SearchForPrices, new { @class = "search-query" })
+                        <input class="btn" id="searchPrices" type="submit" value="Search" />
+                    }
+                    @using (Html.BeginForm())
+                    {
+
+                        if (this.Model != null)
+                        {
+                            if (Model.PriceResults != null)
+                            {
+                                if (Model.PriceResults.numPrices >= 1)
+                                {
+                                    <div id="resultMessage2" style="color:Red">
+                                        @Html.LabelFor(m => m.PriceResults.numPrices, "Showing " + Model.PriceResults.numPrices + " listed prices")
+                                    </div>
+                                    <br />
+                                    <div class="resultPriceItem">
+                                        <b style="text-transform:uppercase">@Html.DisplayFor(m => m.PriceResults.linkresult1.storeName)</b>
+                                        <br />
+                                        <a target="_blank" href="@Model.PriceResults.linkresult1.storeLink">Click to check price</a>
+                                        <br /><br />
+                                    </div>
+                                }
+                                if (Model.PriceResults.numPrices >= 2)
+                                {
+                                    <div class="resultPriceItem">
+                                        <b style="text-transform:uppercase">@Html.DisplayFor(m => m.PriceResults.linkresult2.storeName)</b>
+                                        <br />
+                                        <a target="_blank" href="@Model.PriceResults.linkresult2.storeLink">Click to check price</a>
+                                        <br /><br />
+                                    </div>
+                                }
+                                if (Model.PriceResults.numPrices >= 3)
+                                {
+                                    <div class="resultPriceItem">
+                                        <b style="text-transform:uppercase">@Html.DisplayFor(m => m.PriceResults.linkresult3.storeName)</b>
+                                        <br />
+                                        <a target="_blank" href="@Model.PriceResults.linkresult3.storeLink">Click to check price</a>
+                                        <br /><br />
+                                    </div>
+                                }
+                                if (Model.PriceResults.numPrices == 0)
+                                {
+                                    <div style="color:Red">
+                                        Search did not return any results. Please refine search and try again.
+                                    </div>
+                                }
+
+                            }
+                        }
+                    }
+
                       
                 </div>
                 <div id="searchResults">

@@ -9,5 +9,7 @@ namespace dpuExchange.Models
     {
         public virtual string SearchByTitle { get; set; }
         public virtual string SearchByIsbn { get; set; }
+        public virtual string SearchForPrices { get; set; }
+
     }
 }
