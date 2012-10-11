@@ -49,6 +49,7 @@ namespace dpuExchange.Models
         public string UserName { get; set; }
 
         [Required]
+        [RegularExpression(@"^([a-zA-Z][\w.]+|[0-9][0-9_.]*[a-zA-Z]+[\w.]*)$", ErrorMessage = "use depauw email address")]
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email address")]
         public string Email { get; set; }
