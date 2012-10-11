@@ -63,7 +63,7 @@ namespace dpuExchange.Controllers
                 return RedirectToAction("Index");  
             }
 
-            return View(books);
+            return View(main);
         }
         
         //

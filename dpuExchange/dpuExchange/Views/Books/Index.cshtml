@@ -3,59 +3,29 @@
 @{
     ViewBag.Title = "Search";
 }
-
+<br />
 <h2>Book Listings</h2>
+<br />
+<ul class="thumbnails">
+    @foreach (var item in Model)
+    {
+  <a href="@Url.Action("Details", "Books", new { id = item.BookID})"><li class="span4">
+    <div class="thumbnail right-caption ">
+      <img class="" src="http://dummyimage.com/120x160/ADADAD/e3e3e3" alt=""/>
+      <div class="caption span2">
+        <h6>@Html.DisplayFor(modelItem => item.Title) </h6>
+        @Html.DisplayFor(modelItem => item.Author) - $@Html.DisplayFor(modelItem => item.Price)
+        <br />
+        <br />
+        <b>Condition:</b>
+        @Html.DisplayFor(modelItem => item.Condition, new { @id = "bookCondition" })
+      </div>
+    </div>
+  </li></a>
+    }
+</ul>​
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            Title
-        </th>
-        <th>
-            Author
-        </th>
-        <th>
-            Price
-        </th>
-        <th>
-            Condition
-        </th>
-        <th>
-            Comments
-        </th>
-        <th>
-            PostDate
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Author)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Condition)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Comments)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostDate)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", new { id = item.BookID })
-        </td>
-    </tr>
-}
+<script type="text/javascript">
 
-</table>
+</script>

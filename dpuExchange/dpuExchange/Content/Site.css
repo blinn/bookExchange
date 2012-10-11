@@ -4,6 +4,20 @@ to use a different color start by replacing all instances of
 #5c87b2 with your new color.
 ----------------------------------------------------------*/
 
+.thumbnail.right-caption > img {
+    float: left;
+    margin-right: 2px;
+}
+
+.thumbnail.right-caption {
+    float: left;
+}
+
+.thumbnail.right-caption > .caption {
+    padding: 2px;
+}
+​
+
 .resultItem label
 {
     font-weight:bold;

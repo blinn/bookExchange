@@ -81,73 +81,77 @@
 
                             if (this.Model != null)
                             {
-                                if (Model.IsbnCollection.numRecords >= 1)
+                                if (Model.IsbnCollection != null)
                                 {
-                                    <div id="resultMessage" style="color:Red">
-                                        @Html.LabelFor(m => m.IsbnCollection.numRecords, "Showing top "+ Model.IsbnCollection.numRecords+ " results")
-                                    </div>
-                                    <br />
-                                    <div class="resultItem">
-                                        @Html.LabelFor(m => m.IsbnCollection.result1.Isbn)
-                                        @Html.DisplayFor(m => m.IsbnCollection.result1.Isbn)
-                                        <br />
-                                        @Html.LabelFor(m => m.IsbnCollection.result1.Title)
-                                        @Html.DisplayFor(m => m.IsbnCollection.result1.Title)
-                                        <br />
-                                        @Html.LabelFor(m => m.IsbnCollection.result1.Author)
-                                        @Html.DisplayFor(m => m.IsbnCollection.result1.Author)
-                                        <br /><br />
-                                    </div>
-                                }
-                                if (Model.IsbnCollection.numRecords >= 2)
-                                {
-                                    <div class="resultItem">
-                                        @Html.LabelFor(m => m.IsbnCollection.result2.Isbn)
-                                        @Html.DisplayFor(m => m.IsbnCollection.result2.Isbn)
-                                        <br />
-                                        @Html.LabelFor(m => m.IsbnCollection.result2.Title)
-                                        @Html.DisplayFor(m => m.IsbnCollection.result2.Title)
-                                        <br />
-                                        @Html.LabelFor(m => m.IsbnCollection.result2.Author)
-                                        @Html.DisplayFor(m => m.IsbnCollection.result2.Author)
-                                        <br /><br />
-                                    </div>
-                                }
-                                if (Model.IsbnCollection.numRecords >= 3)
-                                {
-                                    <div class="resultItem">
-                                        @Html.LabelFor(m => m.IsbnCollection.result3.Isbn)
-                                        @Html.DisplayFor(m => m.IsbnCollection.result3.Isbn)
-                                        <br />
-                                        @Html.LabelFor(m => m.IsbnCollection.result3.Title)
-                                        @Html.DisplayFor(m => m.IsbnCollection.result3.Title)
-                                        <br />
-                                        @Html.LabelFor(m => m.IsbnCollection.result3.Author)
-                                        @Html.DisplayFor(m => m.IsbnCollection.result3.Author)
-                                        <br /><br />
-                                    </div>
-                                }
-                                if (Model.IsbnCollection.numRecords >= 4)
-                                {
-                                    <div class="resultItem">
-                                        @Html.LabelFor(m => m.IsbnCollection.result4.Isbn)
-                                        @Html.DisplayFor(m => m.IsbnCollection.result4.Isbn)
-                                        <br />
-                                        @Html.LabelFor(m => m.IsbnCollection.result4.Title)
-                                        @Html.DisplayFor(m => m.IsbnCollection.result4.Title)
-                                        <br />
-                                        @Html.LabelFor(m => m.IsbnCollection.result4.Author)
-                                        @Html.DisplayFor(m => m.IsbnCollection.result4.Author)
-                                        <br /><br />
-                                    </div>
-                                }
-                                if (Model.IsbnCollection.numRecords == 0)
-                                {
-                                   <div style="color:Red">
-                                        Search did not return any results. Please refine search and try again.
-                                    </div>
-                                }
 
+                                    if (Model.IsbnCollection.numRecords >= 1)
+                                    {
+                                        <div id="resultMessage" style="color:Red">
+                                            @Html.LabelFor(m => m.IsbnCollection.numRecords, "Showing top " + Model.IsbnCollection.numRecords + " results")
+                                        </div>
+                                        <br />
+                                        <div class="resultItem">
+                                            @Html.LabelFor(m => m.IsbnCollection.result1.Isbn)
+                                            @Html.DisplayFor(m => m.IsbnCollection.result1.Isbn)
+                                            <br />
+                                            @Html.LabelFor(m => m.IsbnCollection.result1.Title)
+                                            @Html.DisplayFor(m => m.IsbnCollection.result1.Title)
+                                            <br />
+                                            @Html.LabelFor(m => m.IsbnCollection.result1.Author)
+                                            @Html.DisplayFor(m => m.IsbnCollection.result1.Author)
+                                            <br /><br />
+                                        </div>
+                                    }
+                                    if (Model.IsbnCollection.numRecords >= 2)
+                                    {
+                                        <div class="resultItem">
+                                            @Html.LabelFor(m => m.IsbnCollection.result2.Isbn)
+                                            @Html.DisplayFor(m => m.IsbnCollection.result2.Isbn)
+                                            <br />
+                                            @Html.LabelFor(m => m.IsbnCollection.result2.Title)
+                                            @Html.DisplayFor(m => m.IsbnCollection.result2.Title)
+                                            <br />
+                                            @Html.LabelFor(m => m.IsbnCollection.result2.Author)
+                                            @Html.DisplayFor(m => m.IsbnCollection.result2.Author)
+                                            <br /><br />
+                                        </div>
+                                    }
+                                    if (Model.IsbnCollection.numRecords >= 3)
+                                    {
+                                        <div class="resultItem">
+                                            @Html.LabelFor(m => m.IsbnCollection.result3.Isbn)
+                                            @Html.DisplayFor(m => m.IsbnCollection.result3.Isbn)
+                                            <br />
+                                            @Html.LabelFor(m => m.IsbnCollection.result3.Title)
+                                            @Html.DisplayFor(m => m.IsbnCollection.result3.Title)
+                                            <br />
+                                            @Html.LabelFor(m => m.IsbnCollection.result3.Author)
+                                            @Html.DisplayFor(m => m.IsbnCollection.result3.Author)
+                                            <br /><br />
+                                        </div>
+                                    }
+                                    if (Model.IsbnCollection.numRecords >= 4)
+                                    {
+                                        <div class="resultItem">
+                                            @Html.LabelFor(m => m.IsbnCollection.result4.Isbn)
+                                            @Html.DisplayFor(m => m.IsbnCollection.result4.Isbn)
+                                            <br />
+                                            @Html.LabelFor(m => m.IsbnCollection.result4.Title)
+                                            @Html.DisplayFor(m => m.IsbnCollection.result4.Title)
+                                            <br />
+                                            @Html.LabelFor(m => m.IsbnCollection.result4.Author)
+                                            @Html.DisplayFor(m => m.IsbnCollection.result4.Author)
+                                            <br /><br />
+                                        </div>
+                                    }
+                                    if (Model.IsbnCollection.numRecords == 0)
+                                    {
+                                       <div style="color:Red">
+                                            Search did not return any results. Please refine search and try again.
+                                        </div>
+                                    }
+
+                                }
                             }
                         }
                       
