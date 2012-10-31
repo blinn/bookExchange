@@ -2,30 +2,254 @@
 
 @{
     ViewBag.Title = "Search";
+    string temp = ViewBag.ClassNum;
+    var stringTemp = "";
+    switch (temp)
+    {
+        case "1":
+            stringTemp = "ANTH";
+            break;
+        case "2":
+            stringTemp = "ARAB";
+            break;
+        case "3":
+            stringTemp = "ARMY";
+            break;
+        case "4":
+            stringTemp = "ARTH";
+            break;
+        case "5":
+            stringTemp = "ARTS";
+            break;
+        case "6":
+            stringTemp = "ASIA";
+            break;
+        case "7":
+            stringTemp = "BIO";
+            break;
+        case "8":
+            stringTemp = "BLST";
+            break;
+        case "9":
+            stringTemp = "CFT";
+            break;
+        case "10":
+            stringTemp = "CHEM";
+            break;
+        case "11":
+            stringTemp = "CHIN";
+            break;
+        case "12":
+            stringTemp = "CLST";
+            break;
+        case "13":
+            stringTemp = "COMM";
+            break;
+        case "14":
+            stringTemp = "CSC";
+            break;
+        case "15":
+            stringTemp = "ECON";
+            break;
+        case "16":
+            stringTemp = "EDUC";
+            break;
+        case "17":
+            stringTemp = "ENG";
+            break;
+        case "18":
+            stringTemp = "FILM";
+            break;
+        case "19":
+            stringTemp = "FRENCH";
+            break;
+        case "20":
+            stringTemp = "GEOS";
+            break;
+        case "21":
+            stringTemp = "GERM";
+            break;
+        case "22":
+            stringTemp = "GRK";
+            break;
+        case "23":
+            stringTemp = "HIST";
+            break;
+        case "24":
+            stringTemp = "HONR";
+            break;
+        case "25":
+            stringTemp = "ITAL";
+            break;
+        case "26":
+            stringTemp = "JAPN";
+            break;
+        case "27":
+            stringTemp = "KINS";
+            break;
+        case "28":
+            stringTemp = "LAT";
+            break;
+        case "29":
+            stringTemp = "MATH";
+            break;
+        case "30":
+            stringTemp = "MUS";
+            break;
+        case "31":
+            stringTemp = "PE";
+            break;
+        case "32":
+            stringTemp = "PHIL";
+            break;
+        case "33":
+            stringTemp = "PHYS";
+            break;
+        case "34":
+            stringTemp = "POLS";
+            break;
+        case "35":
+            stringTemp = "PSY";
+            break;
+        case "36":
+            stringTemp = "REL";
+            break;
+        case "37":
+            stringTemp = "RUS";
+            break;
+        case "38":
+            stringTemp = "SOC";
+            break;
+        case "39":
+            stringTemp = "SPAN";
+            break;
+        case "40":
+            stringTemp = "UNIV";
+            break;
+        case "41":
+            stringTemp = "W S";
+            break;
+        case null:
+            stringTemp = "All";
+            break;
+        default:
+            stringTemp = "Error";
+            break;
+    }
 }
+
 <br />
 <h2>Book Listings</h2>
 <br />
+<div class="row">
+<div class="well span4 offset4">
+<h4>Search by Department</h4>
+<select id="searchFilter">
+    <option value="0">Show All</option>
+    <option value="1">ANTH</option>
+    <option value="2">ARAB</option>
+    <option value="3">ARMY</option>
+    <option value="4">ARTH</option>
+    <option value="5">ARTS</option>
+    <option value="6">ASIA</option>
+    <option value="7">BIO</option>
+    <option value="8">BLST</option>
+    <option value="9">CFT</option>
+    <option value="10">CHEM</option>
+    <option value="11">CHIN</option>
+    <option value="12">CLST</option>
+    <option value="13">COMM</option>
+    <option value="14">CSC</option>
+    <option value="15">ECON</option>
+    <option value="16">EDUC</option>
+    <option value="17">ENG</option>
+    <option value="18">FILM</option>
+    <option value="19">FREN</option>
+    <option value="20">GEOS</option>
+    <option value="21">GERM</option>
+    <option value="22">GRK</option>
+    <option value="23">HIST</option>
+    <option value="24">HONR</option>
+    <option value="25">ITAL</option>
+    <option value="26">JAPN</option>
+    <option value="27">KINS</option>
+    <option value="28">LAT</option>
+    <option value="29">Math</option>
+    <option value="30">MUS</option>
+    <option value="31">PE</option>
+    <option value="32">PHIL</option>
+    <option value="33">PHYS</option>
+    <option value="34">POLS</option>
+    <option value="35">PSY</option>
+    <option value="36">REL</option>
+    <option value="37">RUS</option>
+    <option value="38">SOC</option>
+    <option value="39">SPAN</option>
+    <option value="40">UNIV</option>
+    <option value="41">W S</option>
+</select>
+<a class="btn" id="sortem" style="margin-bottom:5px;"><i class="icon-search"></i> Search</a>
+</div>
+</div>
+<br />
+<br />
+<div id="resultMessage" style="color:Red">
+    <p>Showing results that match @stringTemp </p>
+</div>
 <ul class="thumbnails">
-    @foreach (var item in Model)
+    @if (temp == "0" || temp==null)
     {
-  <a href="@Url.Action("Details", "Books", new { id = item.BookID})"><li class="span4">
-    <div class="thumbnail right-caption ">
-      <img class="" src="http://dummyimage.com/120x160/ADADAD/e3e3e3" alt=""/>
-      <div class="caption span2">
-        <h6>@Html.DisplayFor(modelItem => item.Title) </h6>
-        @Html.DisplayFor(modelItem => item.Author) - $@Html.DisplayFor(modelItem => item.Price)
-        <br />
-        <br />
-        <b>Condition:</b>
-        @Html.DisplayFor(modelItem => item.Condition, new { @id = "bookCondition" })
-      </div>
-    </div>
-  </li></a>
+        foreach (var item in Model)
+        {
+      <a href="@Url.Action("Details", "Books", new { id = item.BookID })"><li class="span4">
+        <div class="thumbnail right-caption ">
+          <img class="" src="http://dummyimage.com/120x160/ADADAD/e3e3e3" alt=""/>
+          <div class="caption span2">
+            <h6>@Html.DisplayFor(modelItem => item.Title) </h6>
+            @Html.DisplayFor(modelItem => item.Author) - $@Html.DisplayFor(modelItem => item.Price)
+            <br />
+            <br />
+            <b>Condition:</b>
+            @Html.DisplayFor(modelItem => item.Condition, new { @id = "bookCondition" })
+          </div>
+        </div>
+      </li></a>
+        }
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            if (item.ClassCode == temp)
+            {
+              <a href="@Url.Action("Details", "Books", new { id = item.BookID })"><li class="span4">
+                <div class="thumbnail right-caption ">
+                  <img class="" src="http://dummyimage.com/120x160/ADADAD/e3e3e3" alt=""/>
+                  <div class="caption span2">
+                    <h6>@Html.DisplayFor(modelItem => item.Title) </h6>
+                    @Html.DisplayFor(modelItem => item.Author) - $@Html.DisplayFor(modelItem => item.Price)
+                    <br />
+                    <br />
+                    <b>Condition:</b>
+                    @Html.DisplayFor(modelItem => item.Condition, new { @id = "bookCondition" })
+                  </div>
+                </div>
+              </li></a>
+            }
+        }
     }
 </ul>​
 
-
+<script type="text/javascript" src="../../../Scripts/jquery-1.5.1.js"></script>
 <script type="text/javascript">
-
+    var $ = jQuery;
+    $(document).ready(function () {
+        $("#searchFilter").val(@temp);
+    });
+    $('#sortem').click(function () {
+        var dropText = $('#searchFilter option:selected').val()
+        //window.alert(dropText);
+        var dfd = $.Deferred();
+        window.location.href = '/Books/index?param=' + dropText;
+    });
 </script>

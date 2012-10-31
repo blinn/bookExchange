@@ -21,9 +21,16 @@ namespace dpuExchange.Controllers
         // GET: /Books/
 
       
-        public ViewResult Index()
+        public ActionResult Index(string param)
         {
-            return View(db.BookItems.ToList());
+
+            if (param == "0" || param == null)
+                return View(db.BookItems.ToList());
+            else
+            {
+                ViewBag.ClassNum = param;
+                return View(db.BookItems.ToList());
+            }
         }
 
         //
