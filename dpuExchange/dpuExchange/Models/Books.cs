@@ -18,6 +18,7 @@ namespace dpuExchange.Models
         public virtual string Comments { get; set; }
         public virtual DateTime PostDate { get; set; }
         public virtual string Isbn { get; set; }
+        public virtual string ClassCode { get; set; }
     }
 
     public class BooksDBContext : DbContext
