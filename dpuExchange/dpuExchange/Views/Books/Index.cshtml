@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Search";
     string temp = ViewBag.ClassNum;
+    int numResultShown = 0;
     var stringTemp = "";
     switch (temp)
     {
@@ -130,7 +131,7 @@
             stringTemp = "W S";
             break;
         case null:
-            stringTemp = "All";
+            stringTemp = "Show All";
             break;
         default:
             stringTemp = "Error";
@@ -174,7 +175,7 @@
     <option value="26">JAPN</option>
     <option value="27">KINS</option>
     <option value="28">LAT</option>
-    <option value="29">Math</option>
+    <option value="29">MATH</option>
     <option value="30">MUS</option>
     <option value="31">PE</option>
     <option value="32">PHIL</option>
@@ -193,14 +194,15 @@
 </div>
 <br />
 <br />
-<div id="resultMessage" style="color:Red">
-    <p>Showing results that match @stringTemp </p>
+<div id="resultMessage" style="color:Red; display:inline">
+    <label>Showing <b id="numResult"></b> results that match "@stringTemp"</label>
 </div>
 <ul class="thumbnails">
     @if (temp == "0" || temp==null)
     {
         foreach (var item in Model)
         {
+            numResultShown = numResultShown+1;
       <a href="@Url.Action("Details", "Books", new { id = item.BookID })"><li class="span4">
         <div class="thumbnail right-caption ">
           <img class="" src="http://dummyimage.com/120x160/ADADAD/e3e3e3" alt=""/>
@@ -222,6 +224,7 @@
         {
             if (item.ClassCode == temp)
             {
+                numResultShown = numResultShown + 1;
               <a href="@Url.Action("Details", "Books", new { id = item.BookID })"><li class="span4">
                 <div class="thumbnail right-caption ">
                   <img class="" src="http://dummyimage.com/120x160/ADADAD/e3e3e3" alt=""/>
@@ -245,6 +248,7 @@
     var $ = jQuery;
     $(document).ready(function () {
         $("#searchFilter").val(@temp);
+        $("#numResult").text(@numResultShown);
     });
     $('#sortem').click(function () {
         var dropText = $('#searchFilter option:selected').val()
