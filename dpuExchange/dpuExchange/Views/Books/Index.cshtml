@@ -140,7 +140,7 @@
 }
 
 <br />
-<h2>Book Listings</h2>
+<h2>Search Book Listings</h2>
 <br />
 <div class="row">
 <div class="well span4 offset4">
@@ -203,7 +203,7 @@
         foreach (var item in Model)
         {
             numResultShown = numResultShown+1;
-      <a href="@Url.Action("Details", "Books", new { id = item.BookID })"><li class="span4">
+      <li class="span4"><a href="@Url.Action("Details", "Books", new { id = item.BookID })">
         <div class="thumbnail right-caption ">
           <img class="" src="http://dummyimage.com/120x160/ADADAD/e3e3e3" alt=""/>
           <div class="caption span2">
@@ -215,7 +215,7 @@
             @Html.DisplayFor(modelItem => item.Condition, new { @id = "bookCondition" })
           </div>
         </div>
-      </li></a>
+      </a></li>
         }
     }
     else

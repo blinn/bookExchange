@@ -44,7 +44,10 @@
 </fieldset>
 @using (Html.BeginForm()) {
     <p>
-        <input type="submit" value="Delete" /> |
+        <br />
+        <button class="btn btn-danger" type="submit"><i class="icon-trash"></i> Delete</button>
+        <br />
+        <br />
         @Html.ActionLink("Back to List", "Index")
     </p>
 }

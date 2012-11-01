@@ -12,7 +12,7 @@ using System.Text;
 using System.Xml;
 
 namespace dpuExchange.Controllers
-{ 
+{
     public class BooksController : Controller
     {
         private BooksDBContext db = new BooksDBContext();
@@ -20,7 +20,7 @@ namespace dpuExchange.Controllers
         //
         // GET: /Books/
 
-      
+
         public ActionResult Index(string param)
         {
 
@@ -31,6 +31,11 @@ namespace dpuExchange.Controllers
                 ViewBag.ClassNum = param;
                 return View(db.BookItems.ToList());
             }
+        }
+
+        public ActionResult MyPostings()
+        {
+            return View(db.BookItems.ToList());
         }
 
         //
@@ -50,7 +55,7 @@ namespace dpuExchange.Controllers
         public ActionResult Create()
         {
             return View();
-        } 
+        }
 
         //
         // POST: /Books/Create
@@ -67,12 +72,12 @@ namespace dpuExchange.Controllers
                 books.PostDate = DateTime.Now;
                 db.BookItems.Add(books);
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+                return RedirectToAction("Index");
             }
 
             return View(main);
         }
-        
+
         //
         // GET: /Books/Edit/5
         [Authorize]
@@ -94,7 +99,7 @@ namespace dpuExchange.Controllers
             {
                 db.Entry(books).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("MyPostings");
             }
             return View(books);
         }
@@ -115,7 +120,7 @@ namespace dpuExchange.Controllers
         [HttpPost, ActionName("Delete")]
         [Authorize]
         public ActionResult DeleteConfirmed(Guid id)
-        {            
+        {
             Books books = db.BookItems.Find(id);
             db.BookItems.Remove(books);
             db.SaveChanges();
@@ -168,8 +173,8 @@ namespace dpuExchange.Controllers
                     string title = reader.ReadString();
                     reader.ReadToFollowing("AuthorsText");
                     string author = reader.ReadString();
-                      
-                    
+
+
 
                     bookResults.Isbn = isbn;
                     if (i == 0)
@@ -203,7 +208,7 @@ namespace dpuExchange.Controllers
 
                 }
             }
-            return View( "Create", model);
+            return View("Create", model);
         }
     }
 }

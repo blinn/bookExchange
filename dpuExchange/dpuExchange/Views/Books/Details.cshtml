@@ -12,7 +12,10 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.UserID)
     </div>
-
+    <div class="display-label">ISBN</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Isbn)
+    </div>
     <div class="display-label">Title</div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Title)
@@ -43,12 +46,7 @@
         @Html.DisplayFor(model => model.PostDate)
     </div>
 </fieldset>
-<p>
-@if (Model.UserID == User.Identity.Name){
-            @Html.ActionLink("Edit | ", "Edit", new { id=Model.BookID })
-            @Html.ActionLink("Delete | ", "Delete", new { id = Model.BookID }) 
-  }
-  
-
+<br />
+<p>  
     @Html.ActionLink("Back to List", "Index")
 </p>

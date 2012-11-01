@@ -14,6 +14,13 @@
         <legend>Editing "@Model.Title"</legend>
 
         @Html.HiddenFor(model => model.BookID)
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Isbn, "ISBN")
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Isbn)
+                @Html.ValidationMessageFor(model => model.Isbn)
+            </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.Title)
         </div>
@@ -53,7 +60,59 @@
             @Html.EditorFor(model => model.Comments)
             @Html.ValidationMessageFor(model => model.Comments)
         </div>
-
+        <div class="editor-label">
+                @Html.LabelFor(model => model.ClassCode, "Department Code")
+            </div>
+            <div class="editor-field">
+                @{
+                    Dictionary<string, string> dictionary = new Dictionary<string, string>();
+                            dictionary.Add("<Select Department>", "");
+                            dictionary.Add("ANTH", "1");
+                            dictionary.Add("ARAB", "2");
+                            dictionary.Add("ARMY", "3");
+                            dictionary.Add("ARTH", "4");
+                            dictionary.Add("ARTS", "5");
+                            dictionary.Add("ASIA", "6");
+                            dictionary.Add("BIO", "7");
+                            dictionary.Add("BLST", "8");
+                            dictionary.Add("CFT", "9");
+                            dictionary.Add("CHEM", "10");
+                            dictionary.Add("CHIN", "11");
+                            dictionary.Add("CLST", "12");
+                            dictionary.Add("COMM", "13");
+                            dictionary.Add("CSC", "14");
+                            dictionary.Add("ECON", "15");
+                            dictionary.Add("EDUC", "16");
+                            dictionary.Add("ENG", "17");
+                            dictionary.Add("FILM", "18");
+                            dictionary.Add("FREN", "19");
+                            dictionary.Add("GEOS", "20");
+                            dictionary.Add("GERM", "21");
+                            dictionary.Add("GRK", "22");
+                            dictionary.Add("HIST", "23");
+                            dictionary.Add("HONR", "24");
+                            dictionary.Add("ITAL", "25");
+                            dictionary.Add("JAPN", "26");
+                            dictionary.Add("KINS", "27");
+                            dictionary.Add("LAT", "28");
+                            dictionary.Add("MATH", "29");
+                            dictionary.Add("MUS", "30");
+                            dictionary.Add("PE", "31");
+                            dictionary.Add("PHIL", "32");
+                            dictionary.Add("PHYS", "33");
+                            dictionary.Add("POLS", "34");
+                            dictionary.Add("PSY", "35");
+                            dictionary.Add("REL", "36");
+                            dictionary.Add("RUS", "37");
+                            dictionary.Add("SOC", "38");
+                            dictionary.Add("SPAN", "39");
+                            dictionary.Add("UNIV", "40");
+                            dictionary.Add("W S", "41");
+                            
+                            SelectList list = new SelectList(dictionary, "value", "key");
+                }
+                @Html.DropDownListFor(model => model.ClassCode, list)
+                </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.PostDate)
         </div>
@@ -61,13 +120,13 @@
             @Html.EditorFor(model => model.PostDate)
             @Html.ValidationMessageFor(model => model.PostDate)
         </div>
-
-        <p>
-            <input type="submit" value="Save" />
-        </p>
+        <br />
+        <button class="btn" type="submit"><i class="icon-hdd"></i> Save</button>
+        <a class="btn btn-danger" href="@Url.Action("Delete", "Books", new { id = @Model.BookID })"><i class="icon-remove"></i>  Delete</a>
+        
     </fieldset>
 }
 
-<div>
+<h4>
     @Html.ActionLink("Back to List", "Index")
-</div>
+</h4>
