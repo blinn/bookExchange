@@ -205,7 +205,8 @@
             numResultShown = numResultShown+1;
       <li class="span4"><a href="@Url.Action("Details", "Books", new { id = item.BookID })">
         <div class="thumbnail right-caption ">
-          <img class="" src="http://dummyimage.com/120x160/ADADAD/e3e3e3" alt=""/>
+        @{stringTemp = "http://covers.openlibrary.org/b/isbn/" + item.Isbn + "-M.jpg?default=false";}
+          <img class="" style="width:120px; height:160px;" src=@stringTemp alt="Image" onerror="this.src='http://dummyimage.com/120x160/ADADAD/e3e3e3';"/>
           <div class="caption span2">
             <h6>@Html.DisplayFor(modelItem => item.Title) </h6>
             @Html.DisplayFor(modelItem => item.Author) - $@Html.DisplayFor(modelItem => item.Price)
@@ -227,7 +228,8 @@
                 numResultShown = numResultShown + 1;
               <a href="@Url.Action("Details", "Books", new { id = item.BookID })"><li class="span4">
                 <div class="thumbnail right-caption ">
-                  <img class="" src="http://dummyimage.com/120x160/ADADAD/e3e3e3" alt=""/>
+                    @{stringTemp = "http://covers.openlibrary.org/b/isbn/" + item.Isbn + "-M.jpg?default=false";}
+                  <img style="width:120px; height:160px;" src=@stringTemp alt="Image" onerror="this.src='http://dummyimage.com/120x160/ADADAD/e3e3e3';"/>
                   <div class="caption span2">
                     <h6>@Html.DisplayFor(modelItem => item.Title) </h6>
                     @Html.DisplayFor(modelItem => item.Author) - $@Html.DisplayFor(modelItem => item.Price)

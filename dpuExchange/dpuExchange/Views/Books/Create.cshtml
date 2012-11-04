@@ -116,6 +116,9 @@
     }
 
     </div>
+    <div class="row" style="float:left; margin-top:75px;">
+            <img id="imageLookup" style="width:120px; height:160px;"   src="http://dummyimage.com/120x160/ADADAD/e3e3e3" onerror="this.src='http://dummyimage.com/120x160/ADADAD/e3e3e3';"/>
+        </div>
 
     <div class="row">
         <div class="span5 offset2">
@@ -215,3 +218,12 @@
         </div>
     </div>
 </div>
+
+<script src="../../../Scripts/jquery-1.5.1.js" type="text/javascript"></script>
+<script type="text/javascript">
+    var $ = jQuery;
+    $("#BooksModel_Isbn").change(function () {
+        var isbn = $("#BooksModel_Isbn").val();
+        $("#imageLookup").attr("src", "http://covers.openlibrary.org/b/isbn/" + isbn + "-M.jpg?default=false");
+    });
+</script>
