@@ -33,6 +33,7 @@ namespace dpuExchange.Controllers
             }
         }
 
+        [Authorize]
         public ActionResult MyPostings()
         {
             return View(db.BookItems.ToList());
