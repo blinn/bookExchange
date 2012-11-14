@@ -65,12 +65,14 @@
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Books.cs" />
+    <Compile Include="Models\EmailModel.cs" />
     <Compile Include="Models\IsbnResults.cs" />
     <Compile Include="Models\MainModel.cs" />
     <Compile Include="Models\Searches.cs" />
@@ -177,6 +179,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Books\MyPostings.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Email\RequestPage.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

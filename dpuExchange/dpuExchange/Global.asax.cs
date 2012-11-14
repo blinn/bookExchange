@@ -26,6 +26,11 @@ namespace dpuExchange
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
+            routes.MapRoute(
+            "EmailRequest",
+            "{controller}/{action}/{id}/{bookTitle}",
+            new { controller = "Home", action = "Index", id = UrlParameter.Optional, bookTitle = "" }
+            );
 
         }
 

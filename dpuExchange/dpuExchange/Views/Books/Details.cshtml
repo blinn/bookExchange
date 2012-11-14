@@ -4,7 +4,8 @@
     ViewBag.Title = Model.Title;
 }
 
-
+<div class="row">
+<div class="span">
 <fieldset>
     <legend>"@Model.Title" by @Model.Author</legend>
 
@@ -50,3 +51,10 @@
 <p>  
     @Html.ActionLink("Back to List", "Index")
 </p>
+</div>
+
+<div class="row" style="margin-top:120px;">
+<h5>Interested in this book? Let the seller know!</h5>
+<a class="btn btn-warning btn-large" href="@Url.Action("RequestPage","Email", new { id = @Model.UserID, bookTitle = @Model.Title})">I'm Interested</a>
+</div>
+</div>
