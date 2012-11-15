@@ -54,28 +54,37 @@
     var $ = jQuery;
     $(".alert-message").hide();
     $("#sendBtn").click(function () {
-        var sellerName = $("#Seller").val();
-        var buyerName = $("#Sender").val();
-        var bookName = $("#BookTitle").val();
-        var eMessage = $("#Message").val();
-        if (buyerName === sellerName) {
-            $(".alert-warning").fadeIn(500);
-            $(".alert-warning").delay(2000).fadeOut(3000);
-            return false;
+        if($("#sendBtn").attr('disabled')){
+            return;
         }
-        $.ajax({
-            url: '/Email/Send',
-            type: 'POST',
-            data: { Seller: sellerName, Sender: buyerName, BookTitle: bookName, Message: eMessage },
-            success: function (result) {
-                $(".alert-success").fadeIn(500);
-                $(".alert-success").delay(2000).fadeOut(3000);
-            },
-            error: function (result) {
-                $(".alert-error").fadeIn(500);
-                $(".alert-error").delay(2000).fadeOut(3000);
+        else{
+            $('#sendBtn').attr('disabled', 'true');
+            var sellerName = $("#Seller").val();
+            var buyerName = $("#Sender").val();
+            var bookName = $("#BookTitle").val();
+            var eMessage = $("#Message").val();
+            if (buyerName === sellerName) {
+                $(".alert-warning").fadeIn(500);
+                $(".alert-warning").delay(2000).fadeOut(3000);
+                $('#sendBtn').removeAttr('disabled');
+                return false;
             }
-        });
+            $.ajax({
+                url: '/Email/Send',
+                type: 'POST',
+                data: { Seller: sellerName, Sender: buyerName, BookTitle: bookName, Message: eMessage },
+                success: function (result) {
+                    $(".alert-success").fadeIn(500);
+                    $(".alert-success").delay(2000).fadeOut(3000);
+                
+                },
+                error: function (result) {
+                    $(".alert-error").fadeIn(500);
+                    $(".alert-error").delay(2000).fadeOut(3000);
+                    $('#sendBtn').removeAttr('disabled');
+                }
+            });
+            }
 
     });
 </script>

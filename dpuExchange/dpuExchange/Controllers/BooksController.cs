@@ -85,6 +85,10 @@ namespace dpuExchange.Controllers
         public ActionResult Edit(Guid id)
         {
             Books books = db.BookItems.Find(id);
+            if (books.UserID != User.Identity.Name)
+            {
+                return RedirectToAction("Index");
+            }
             return View(books);
         }
 
