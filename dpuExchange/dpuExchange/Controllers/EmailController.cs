@@ -31,12 +31,23 @@ namespace dpuExchange.Controllers
             message.To.Add(new MailAddress(sellerAddress.Email));
             message.From = new MailAddress(senderAddress.Email);
             message.Subject = "Someone is interested in one of your books!";
-            string emailBody = "This is an automatically generated email from DePauwBookExchange! "
-            + "The user " + Sender + " is interested in your book titled \"" + BookTitle + "\".\n\n"
-            + "Below is a personal message from the user: \n \""
-            + Message + "\"\n\n"
-            + "To follow up with this user, please contact them at " + senderAddress.Email + ". \n"
-            + "Thank you for using DePauwBookExchange!";
+            string emailBody = "";
+            if (Message == "")
+            {
+                emailBody = "This is an automatically generated email from DePauwBookExchange! "
+                + "The user " + Sender + " is interested in your book titled \"" + BookTitle + "\".\n\n"
+                + "To follow up with this user, please contact them at " + senderAddress.Email + ". \n\n"
+                + "Thank you for using DePauwBookExchange!";
+            }
+            else
+            {
+                emailBody = "This is an automatically generated email from DePauwBookExchange! "
+                + "The user " + Sender + " is interested in your book titled \"" + BookTitle + "\".\n\n"
+                + "Below is a personal message from the user: \n \""
+                + Message + "\"\n"
+                + "To follow up with this user, please contact them at " + senderAddress.Email + ". \n\n"
+                + "Thank you for using DePauwBookExchange!";
+            }
             message.Body = emailBody;
 
             SmtpClient client = new SmtpClient();
