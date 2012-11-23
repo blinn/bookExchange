@@ -52,6 +52,8 @@ namespace dpuExchange.Controllers
 
             SmtpClient client = new SmtpClient();
             client.EnableSsl = true;
+            client.Port = 587;
+            client.Host = "smtp.gmail.com";
             client.Send(message);
         }
 

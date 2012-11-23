@@ -138,82 +138,16 @@ namespace dpuExchange.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult searchForISBN(MainModel model)
+        public string searchForISBN(String titleSearch)
         {
-            Searches search = new Searches();
-            search = model.SearchModel;
-            HttpWebRequest request = WebRequest.Create("http://isbndb.com/api/books.xml?access_key=2PFWPRKF&index1=title&value1=" + search.SearchByTitle) as HttpWebRequest;
+            HttpWebRequest request = WebRequest.Create("http://isbndb.com/api/books.xml?access_key=2PFWPRKF&index1=title&value1=" + titleSearch) as HttpWebRequest;
             string result = null;
             using (HttpWebResponse resp = request.GetResponse() as HttpWebResponse)
             {
                 StreamReader reader = new StreamReader(resp.GetResponseStream());
                 result = reader.ReadToEnd();
             }
-            IsbnResults bookResults = new IsbnResults();
-            StringBuilder output = new StringBuilder();
-            using (XmlReader reader = XmlReader.Create(new StringReader(result)))
-            {
-                reader.ReadToFollowing("BookList");
-                reader.MoveToFirstAttribute();
-                reader.MoveToNextAttribute();
-                reader.MoveToNextAttribute();
-                reader.MoveToNextAttribute();
-                string shown_results = reader.Value;
-                int numResults;
-                bool parsed = Int32.TryParse(shown_results, out numResults);
-                if (numResults > 4)
-                {
-                    numResults = 4;
-                }
-                model.IsbnCollection = new IsbnResultList();
-                for (int i = 0; i < numResults; i++)
-                {
-
-                    reader.ReadToFollowing("BookData");
-                    reader.MoveToFirstAttribute();
-                    reader.MoveToNextAttribute();
-                    reader.MoveToNextAttribute();
-                    string isbn = reader.Value;
-                    reader.ReadToFollowing("Title");
-                    string title = reader.ReadString();
-                    reader.ReadToFollowing("AuthorsText");
-                    string author = reader.ReadString();
-
-
-
-                    bookResults.Isbn = isbn;
-                    if (i == 0)
-                    {
-                        model.IsbnCollection.result1.Isbn = isbn;
-                        model.IsbnCollection.result1.Title = title;
-                        model.IsbnCollection.result1.Author = author;
-                        model.IsbnCollection.numRecords = 1;
-                    }
-                    else if (i == 1)
-                    {
-                        model.IsbnCollection.result2.Isbn = isbn;
-                        model.IsbnCollection.result2.Title = title;
-                        model.IsbnCollection.result2.Author = author;
-                        model.IsbnCollection.numRecords = 2;
-                    }
-                    else if (i == 2)
-                    {
-                        model.IsbnCollection.result3.Isbn = isbn;
-                        model.IsbnCollection.result3.Title = title;
-                        model.IsbnCollection.result3.Author = author;
-                        model.IsbnCollection.numRecords = 3;
-                    }
-                    else
-                    {
-                        model.IsbnCollection.result4.Isbn = isbn;
-                        model.IsbnCollection.result4.Title = title;
-                        model.IsbnCollection.result4.Author = author;
-                        model.IsbnCollection.numRecords = 4;
-                    }
-
-                }
-            }
-            return View("Create", model);
+            return result;
         }
     }
 }
