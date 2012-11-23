@@ -122,14 +122,14 @@
         </div>
 
     <div class="row">
-        <div class="span5 offset2">
+        <div class="span6 offset2">
         <br />
         <div>
             <legend>Enter title to search for ISBN</legend> 
             @Html.TextBoxFor(m => m.SearchModel.SearchByTitle, new { @class = "search-query" })
             <a id="searchForISBN"  class="btn"><i class="icon-search"></i>  Search</a> 
         </div>
-                <div style="margin-top:15px;" id="searchResults">
+                <div style="margin-top:15px; padding-right:40px;  height:570px; width:auto; overflow:auto;" id="searchResults">
                     <p id="results"></p>
                 </div>
         </div>
@@ -143,6 +143,10 @@
     currentResult = 0,
     numResults = 0,
     data;
+    function updateISBN() {
+        var isbn = $("#BooksModel_Isbn").val();
+        $("#imageLookup").attr("src", "http://covers.openlibrary.org/b/isbn/" + isbn + "-M.jpg?default=false");
+    }
     $("#BooksModel_Isbn").change(function () {
         var isbn = $("#BooksModel_Isbn").val();
         $("#imageLookup").attr("src", "http://covers.openlibrary.org/b/isbn/" + isbn + "-M.jpg?default=false");
@@ -158,24 +162,25 @@
             data: { titleSearch: title },
             success: function (result) {
                 data = $.xml2json(result);
-                numResults = 10;
-                //numResults = data.BookList.shown_results;
+                numResults = data.BookList.shown_results;
                 if (numResults <= 3) {
                     for (var i = currentResult; i < numResults; i++) {
-                        $("#results").append('<p> Title: ' + data.BookList.BookData[i].Title + '</p>');
-                        $("#results").append('<p> Author:   ' + data.BookList.BookData[i].AuthorsText + '</p>');
-                        $("#results").append('<p> ISBN:   ' + data.BookList.BookData[i].isbn + '</p>');
-                        $("#results").append('<p> ISBN-13:   ' + data.BookList.BookData[i].isbn13 + '</p>');
+                        $("#results").append('<button style="float:right" class="use-this-btn btn btn-success">Use</button>');
+                        $("#results").append('<b> Title: </b><p>' + data.BookList.BookData[i].Title + '</p>');
+                        $("#results").append('<b> Author: </b><p>  ' + data.BookList.BookData[i].AuthorsText + '</p>');
+                        $("#results").append('<b> ISBN: </b><p>  ' + data.BookList.BookData[i].isbn + '</p>');
+                        $("#results").append('<b> ISBN-13:  </b><p> ' + data.BookList.BookData[i].isbn13 + '</p>');
                         $("#results").append('<hr />');
                         $("#results").append('<br />');
                     }
                 }
                 else {
                     for (var i = currentResult; i < 3; i++) {
-                        $("#results").append('<p> Title:   ' + data.BookList.BookData[i].Title + '</p>');
-                        $("#results").append('<p> Author:   ' + data.BookList.BookData[i].AuthorsText + '</p>');
-                        $("#results").append('<p> ISBN:   ' + data.BookList.BookData[i].isbn + '</p>');
-                        $("#results").append('<p> ISBN-13:   ' + data.BookList.BookData[i].isbn13 + '</p>');
+                        $("#results").append('<button style="float:right" class="use-this-btn btn btn-success">Use</button>');
+                        $("#results").append('<b> Title: </b> <p> ' + data.BookList.BookData[i].Title + '</p>');
+                        $("#results").append('<b> Author:</b> <p>  ' + data.BookList.BookData[i].AuthorsText + '</p>');
+                        $("#results").append('<b> ISBN: </b> <p> ' + data.BookList.BookData[i].isbn + '</p>');
+                        $("#results").append('<b> ISBN-13: </b> <p> ' + data.BookList.BookData[i].isbn13 + '</p>');
                         $("#results").append('<hr />');
                         $("#results").append('<br />');
                         currentResult = i + 1;
@@ -190,17 +195,26 @@
             }
         });
     });
+    $(".use-this-btn").live('click', function () {
+        var element = this.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling;
+        var isbn = $(element).text();
+        isbn = $.trim(isbn);
+        $("#BooksModel_Isbn").val(isbn);
+        updateISBN();
+    });
     function moreResults() {
         for (var x = currentResult; x <= numResults-1; x++) {
             $("#showMoreBtn").remove();
-            $("#results").append('<p> Title:   ' + data.BookList.BookData[x].Title + '</p>');
-            $("#results").append('<p> Author:   ' + data.BookList.BookData[x].AuthorsText + '</p>');
-            $("#results").append('<p> ISBN:   ' + data.BookList.BookData[x].isbn + '</p>');
-            $("#results").append('<p> ISBN-13:   ' + data.BookList.BookData[x].isbn13 + '</p>');
+            $("#results").append('<button style="float:right" class="use-this-btn btn btn-success">Use</button>');
+            $("#results").append('<b> Title:</b><p>' + data.BookList.BookData[x].Title + '</p>');
+            $("#results").append('<b> Author:</b><p>' + data.BookList.BookData[x].AuthorsText + '</p>');
+            $("#results").append('<b> ISBN:</b><p>' + data.BookList.BookData[x].isbn + '</p>');
+            $("#results").append('<b> ISBN-13:</b><p>' + data.BookList.BookData[x].isbn13 + '</p>');
             $("#results").append('<hr />');
             $("#results").append('<br />');
             currentResult = x + 1;
         }
     }
+    
 </script>
 
