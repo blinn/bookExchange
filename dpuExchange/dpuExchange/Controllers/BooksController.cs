@@ -19,8 +19,6 @@ namespace dpuExchange.Controllers
 
         //
         // GET: /Books/
-
-
         public ActionResult Index(string param)
         {
 
@@ -33,15 +31,16 @@ namespace dpuExchange.Controllers
             }
         }
 
+        // Returns MyPostings.cshtml View
+        // GET: /Books/MyPostings
         [Authorize]
         public ActionResult MyPostings()
         {
             return View(db.BookItems.ToList());
         }
 
-        //
-        // GET: /Books/Details/5
-
+        //Returns Details.cshtml View 
+        // GET: /Books/Details/id
         [Authorize]
         public ViewResult Details(Guid id)
         {
@@ -51,18 +50,16 @@ namespace dpuExchange.Controllers
             return View(model);
         }
 
-        //
+        // Returns Create.cshtml View
         // GET: /Books/Create
-
         [Authorize]
         public ActionResult Create()
         {
             return View();
         }
 
-        //
+        // Created Book item and saves to database
         // POST: /Books/Create
-
         [HttpPost]
         [Authorize]
         public ActionResult Create(MainModel main)
@@ -81,8 +78,8 @@ namespace dpuExchange.Controllers
             return View(main);
         }
 
-        //
-        // GET: /Books/Edit/5
+        // Returns Edit.cshtml View
+        // GET: /Books/Edit/id
         [Authorize]
         public ActionResult Edit(Guid id)
         {
@@ -94,9 +91,8 @@ namespace dpuExchange.Controllers
             return View(books);
         }
 
-        //
-        // POST: /Books/Edit/5
-
+        // Saves changes to book item is modified
+        // POST: /Books/Edit/id
         [HttpPost]
         [Authorize]
         public ActionResult Edit(Books books)
@@ -111,9 +107,8 @@ namespace dpuExchange.Controllers
             return View(books);
         }
 
-        //
-        // GET: /Books/Delete/5
-
+        // Returns Delete.cshtml View
+        // GET: /Books/Delete/id
         [Authorize]
         public ActionResult Delete(Guid id)
         {
@@ -121,9 +116,8 @@ namespace dpuExchange.Controllers
             return View(books);
         }
 
-        //
-        // POST: /Books/Delete/5
-
+        // Deletes book item from database and returns to MyPostins.cshtml
+        // POST: /Books/Delete/
         [HttpPost, ActionName("Delete")]
         [Authorize]
         public ActionResult DeleteConfirmed(Guid id)
@@ -131,7 +125,7 @@ namespace dpuExchange.Controllers
             Books books = db.BookItems.Find(id);
             db.BookItems.Remove(books);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("MyPostings");
         }
 
         protected override void Dispose(bool disposing)
@@ -140,6 +134,7 @@ namespace dpuExchange.Controllers
             base.Dispose(disposing);
         }
 
+        //Returns xml data from isbndb.com/api with search results
         public string searchForISBN(String titleSearch)
         {
             HttpWebRequest request = WebRequest.Create("http://isbndb.com/api/books.xml?access_key=2PFWPRKF&index1=title&value1=" + titleSearch) as HttpWebRequest;

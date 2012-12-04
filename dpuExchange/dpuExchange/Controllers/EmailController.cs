@@ -11,9 +11,8 @@ namespace dpuExchange.Controllers
 {
     public class EmailController : Controller
     {
-        //
+        // Returns RequestPage.cshtml View
         // GET: /Email/
-
         public ActionResult RequestPage(String id, String bookTitle)
         {
             EmailModel email = new EmailModel();
@@ -23,6 +22,7 @@ namespace dpuExchange.Controllers
             return View(email);
         }
 
+        // Takes message parameters and sends email message
         public void Send(String Seller, String Sender, String BookTitle, String Message)
         {
             MailMessage message = new MailMessage();

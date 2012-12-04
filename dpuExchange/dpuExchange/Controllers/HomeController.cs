@@ -8,14 +8,8 @@ namespace dpuExchange.Controllers
 {
     public class HomeController : Controller
     {
+        // Returns Index.cshtml View
         public ActionResult Index()
-        {
-            ViewBag.Message = "Welcome to ASP.NET MVC!";
-
-            return View();
-        }
-
-        public ActionResult About()
         {
             return View();
         }

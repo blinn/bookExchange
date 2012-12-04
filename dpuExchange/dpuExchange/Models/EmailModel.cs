@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 
+//Model used by Email/RequestPage
 namespace dpuExchange.Models
 {
     public class EmailModel

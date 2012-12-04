@@ -12,17 +12,15 @@ namespace dpuExchange.Controllers
     public class AccountController : Controller
     {
 
-        //
+        // Returns LogOn.cshtml View
         // GET: /Account/LogOn
-
         public ActionResult LogOn()
         {
             return View();
         }
 
-        //
+        // Verifies LogOn Credentials
         // POST: /Account/LogOn
-
         [HttpPost]
         public ActionResult LogOn(LogOnModel model, string returnUrl)
         {
@@ -52,9 +50,8 @@ namespace dpuExchange.Controllers
             return View(model);
         }
 
-        //
+        // LogOut function
         // GET: /Account/LogOff
-
         public ActionResult LogOff()
         {
             FormsAuthentication.SignOut();
@@ -62,17 +59,15 @@ namespace dpuExchange.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        //
+        // Returns Register.cshtml View
         // GET: /Account/Register
-
         public ActionResult Register()
         {
             return View();
         }
 
-        //
+        // Creates account granting access to site
         // POST: /Account/Register
-
         [HttpPost]
         public ActionResult Register(RegisterModel model)
         {
@@ -100,18 +95,16 @@ namespace dpuExchange.Controllers
             return View(model);
         }
 
-        //
+        // Currently not in use
         // GET: /Account/ChangePassword
-
         [Authorize]
         public ActionResult ChangePassword()
         {
             return View();
         }
 
-        //
+        // Currently not in use 
         // POST: /Account/ChangePassword
-
         [Authorize]
         [HttpPost]
         public ActionResult ChangePassword(ChangePasswordModel model)
@@ -146,9 +139,8 @@ namespace dpuExchange.Controllers
             return View(model);
         }
 
-        //
+        // Currently not in uses
         // GET: /Account/ChangePasswordSuccess
-
         public ActionResult ChangePasswordSuccess()
         {
             return View();

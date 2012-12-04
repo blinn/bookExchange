@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+//Model used by MainModel.cs
 namespace dpuExchange.Models
 {
     public class Searches

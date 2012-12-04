@@ -4,16 +4,12 @@
     ViewBag.Title = "Edit";
 }
 
-
-<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
-
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>Editing "@Model.Title"</legend>
 
-        @Html.HiddenFor(model => model.BookID)
+            @Html.HiddenFor(model => model.BookID)
             <div class="editor-label">
                 @Html.LabelFor(model => model.Isbn, "ISBN")
             </div>
@@ -21,47 +17,47 @@
                 @Html.EditorFor(model => model.Isbn)
                 @Html.ValidationMessageFor(model => model.Isbn)
             </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Title)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Title)
-            @Html.ValidationMessageFor(model => model.Title)
-        </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Title)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Title)
+                @Html.ValidationMessageFor(model => model.Title)
+            </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Author)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Author)
-            @Html.ValidationMessageFor(model => model.Author)
-        </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Author)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Author)
+                @Html.ValidationMessageFor(model => model.Author)
+            </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Price)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Price)
-            @Html.ValidationMessageFor(model => model.Price)
-        </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Price)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Price)
+                @Html.ValidationMessageFor(model => model.Price)
+            </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Condition)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Condition)
-            @Html.ValidationMessageFor(model => model.Condition)
-        </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Condition)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Condition)
+                @Html.ValidationMessageFor(model => model.Condition)
+            </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Comments)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Comments)
-            @Html.ValidationMessageFor(model => model.Comments)
-        </div>
-        <div class="editor-label">
-                @Html.LabelFor(model => model.ClassCode, "Department Code")
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Comments)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Comments)
+                @Html.ValidationMessageFor(model => model.Comments)
+            </div>
+            <div class="editor-label">
+                    @Html.LabelFor(model => model.ClassCode, "Department Code")
             </div>
             <div class="editor-field">
                 @{
@@ -113,17 +109,16 @@
                 }
                 @Html.DropDownListFor(model => model.ClassCode, list)
                 </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.PostDate)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.PostDate)
-            @Html.ValidationMessageFor(model => model.PostDate)
-        </div>
-        <br />
+            <div class="editor-label">
+                @Html.LabelFor(model => model.PostDate)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.PostDate)
+                @Html.ValidationMessageFor(model => model.PostDate)
+            </div>
+            <br />
         <button class="btn" type="submit"><i class="icon-hdd"></i> Save</button>
-        <a class="btn btn-danger" href="@Url.Action("Delete", "Books", new { id = @Model.BookID })"><i class="icon-remove"></i>  Delete</a>
-        
+        <a class="btn btn-danger" href="@Url.Action("Delete", "Books", new { id = @Model.BookID })"><i class="icon-remove"></i>  Delete</a>  
     </fieldset>
 }
 

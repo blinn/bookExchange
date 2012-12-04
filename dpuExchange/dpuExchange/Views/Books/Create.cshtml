@@ -111,27 +111,28 @@
                             SelectList list = new SelectList(dictionary, "value", "key");
                 }
                 @Html.DropDownListFor(model => model.BooksModel.ClassCode, list)
-                </div>
-               <input  class="btn" type="submit" value="Create" />
+            </div>
+            <input class="btn" type="submit" value="Create" />
         </fieldset>
-    }
+        }
 
     </div>
+
     <div class="row nav-collapse" style="float:left; margin-top:75px;">
-            <img id="imageLookup" style="width:120px; height:160px;"   src="http://dummyimage.com/120x160/ADADAD/e3e3e3" onerror="this.src='http://dummyimage.com/120x160/ADADAD/e3e3e3';"/>
-        </div>
+            <img id="imageLookup" style="width:120px; height:160px;"   src="../../../Content/Images/imageISBN.png" onerror="this.src='../../../Content/Images/imageISBN.png';"/>
+    </div>
 
     <div class="row">
         <div class="span4 offset2">
         <br />
-        <div class="nav-collapse">
-            <legend>Enter title to search for ISBN</legend> 
-            @Html.TextBoxFor(m => m.SearchModel.SearchByTitle, new { @class = "search-query" })
-            <a id="searchForISBN"  class="btn"><i class="icon-search"></i>  Search</a> 
-        </div>
-                <div style="margin-top:15px; padding-right:40px;  height:570px; width:auto; overflow:auto;" id="searchResults">
-                    <p id="results"></p>
-                </div>
+            <div class="nav-collapse">
+                <legend>Enter title to search for ISBN</legend> 
+                @Html.TextBoxFor(m => m.SearchModel.SearchByTitle, new { @class = "search-query" })
+                <a id="searchForISBN"  class="btn"><i class="icon-search"></i>  Search</a> 
+            </div>
+            <div style="margin-top:15px; padding-right:40px;  height:570px; width:auto; overflow:auto;" id="searchResults">
+                <p id="results"></p>
+            </div>
         </div>
     </div>
 </div>

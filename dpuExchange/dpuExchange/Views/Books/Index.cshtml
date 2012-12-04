@@ -144,55 +144,55 @@
 <h2>Search Book Listings</h2>
 <br />
 <div class="row">
-<div class="well span4 offset4">
-<h4>Search by Department</h4>
-<select id="searchFilter">
-    <option value="0">Show All</option>
-    <option value="1">ANTH</option>
-    <option value="2">ARAB</option>
-    <option value="3">ARMY</option>
-    <option value="4">ARTH</option>
-    <option value="5">ARTS</option>
-    <option value="6">ASIA</option>
-    <option value="7">BIO</option>
-    <option value="8">BLST</option>
-    <option value="9">CFT</option>
-    <option value="10">CHEM</option>
-    <option value="11">CHIN</option>
-    <option value="12">CLST</option>
-    <option value="13">COMM</option>
-    <option value="14">CSC</option>
-    <option value="15">ECON</option>
-    <option value="16">EDUC</option>
-    <option value="17">ENG</option>
-    <option value="18">FILM</option>
-    <option value="19">FREN</option>
-    <option value="20">GEOS</option>
-    <option value="21">GERM</option>
-    <option value="22">GRK</option>
-    <option value="23">HIST</option>
-    <option value="24">HONR</option>
-    <option value="25">ITAL</option>
-    <option value="26">JAPN</option>
-    <option value="27">KINS</option>
-    <option value="28">LAT</option>
-    <option value="29">MATH</option>
-    <option value="30">MUS</option>
-    <option value="31">PE</option>
-    <option value="32">PHIL</option>
-    <option value="33">PHYS</option>
-    <option value="34">POLS</option>
-    <option value="35">PSY</option>
-    <option value="36">REL</option>
-    <option value="37">RUS</option>
-    <option value="38">SOC</option>
-    <option value="39">SPAN</option>
-    <option value="40">UNIV</option>
-    <option value="41">W S</option>
-    <option value="42">OTHER</option>
-</select>
-<a class="btn" id="sortem" style="margin-bottom:5px;"><i class="icon-search"></i> Search</a>
-</div>
+    <div class="well span4 offset4">
+        <h4>Search by Department</h4>
+        <select id="searchFilter">
+            <option value="0">Show All</option>
+            <option value="1">ANTH</option>
+            <option value="2">ARAB</option>
+            <option value="3">ARMY</option>
+            <option value="4">ARTH</option>
+            <option value="5">ARTS</option>
+            <option value="6">ASIA</option>
+            <option value="7">BIO</option>
+            <option value="8">BLST</option>
+            <option value="9">CFT</option>
+            <option value="10">CHEM</option>
+            <option value="11">CHIN</option>
+            <option value="12">CLST</option>
+            <option value="13">COMM</option>
+            <option value="14">CSC</option>
+            <option value="15">ECON</option>
+            <option value="16">EDUC</option>
+            <option value="17">ENG</option>
+            <option value="18">FILM</option>
+            <option value="19">FREN</option>
+            <option value="20">GEOS</option>
+            <option value="21">GERM</option>
+            <option value="22">GRK</option>
+            <option value="23">HIST</option>
+            <option value="24">HONR</option>
+            <option value="25">ITAL</option>
+            <option value="26">JAPN</option>
+            <option value="27">KINS</option>
+            <option value="28">LAT</option>
+            <option value="29">MATH</option>
+            <option value="30">MUS</option>
+            <option value="31">PE</option>
+            <option value="32">PHIL</option>
+            <option value="33">PHYS</option>
+            <option value="34">POLS</option>
+            <option value="35">PSY</option>
+            <option value="36">REL</option>
+            <option value="37">RUS</option>
+            <option value="38">SOC</option>
+            <option value="39">SPAN</option>
+            <option value="40">UNIV</option>
+            <option value="41">W S</option>
+            <option value="42">OTHER</option>
+        </select>
+        <a class="btn" id="sortem" style="margin-bottom:5px;"><i class="icon-search"></i> Search</a>
+    </div>
 </div>
 <br />
 <br />
@@ -206,20 +206,20 @@
         foreach (var item in Model)
         {
             numResultShown = numResultShown+1;
-      <li class="span4"><a href="@Url.Action("Details", "Books", new { id = item.BookID })">
-        <div class="thumbnail right-caption ">
-        @{stringTemp = "http://covers.openlibrary.org/b/isbn/" + item.Isbn + "-M.jpg?default=false";}
-          <img class="" style="width:120px; height:160px;" src=@stringTemp alt="Image" onerror="this.src='http://dummyimage.com/120x160/ADADAD/e3e3e3';"/>
-          <div class="caption span2">
-            <h6>@Html.DisplayFor(modelItem => item.Title) </h6>
-            @Html.DisplayFor(modelItem => item.Author) - $@Html.DisplayFor(modelItem => item.Price)
-            <br />
-            <br />
-            <b>Condition:</b>
-            @Html.DisplayFor(modelItem => item.Condition, new { @id = "bookCondition" })
-          </div>
-        </div>
-      </a></li>
+            <li class="span4"><a href="@Url.Action("Details", "Books", new { id = item.BookID })">
+            <div class="thumbnail right-caption ">
+                @{stringTemp = "http://covers.openlibrary.org/b/isbn/" + item.Isbn + "-M.jpg?default=false";}
+                <img class="" style="width:120px; height:160px;" src=@stringTemp alt="Image" onerror="this.src='../../../Content/Images/image404.png';"/>
+                <div class="caption span2">
+                    <h6>@Html.DisplayFor(modelItem => item.Title) </h6>
+                    @Html.DisplayFor(modelItem => item.Author) - $@Html.DisplayFor(modelItem => item.Price)
+                    <br />
+                    <br />
+                    <b>Condition:</b>
+                    @Html.DisplayFor(modelItem => item.Condition, new { @id = "bookCondition" })
+                </div>
+            </div>
+        </a></li>
         }
     }
     else
@@ -229,18 +229,18 @@
             if (item.ClassCode == temp)
             {
                 numResultShown = numResultShown + 1;
-              <a href="@Url.Action("Details", "Books", new { id = item.BookID })"><li class="span4">
+                <a href="@Url.Action("Details", "Books", new { id = item.BookID })"><li class="span4">
                 <div class="thumbnail right-caption ">
                     @{stringTemp = "http://covers.openlibrary.org/b/isbn/" + item.Isbn + "-M.jpg?default=false";}
-                  <img style="width:120px; height:160px;" src=@stringTemp alt="Image" onerror="this.src='http://dummyimage.com/120x160/ADADAD/e3e3e3';"/>
-                  <div class="caption span2">
-                    <h6>@Html.DisplayFor(modelItem => item.Title) </h6>
-                    @Html.DisplayFor(modelItem => item.Author) - $@Html.DisplayFor(modelItem => item.Price)
-                    <br />
-                    <br />
-                    <b>Condition:</b>
-                    @Html.DisplayFor(modelItem => item.Condition, new { @id = "bookCondition" })
-                  </div>
+                    <img style="width:120px; height:160px;" src=@stringTemp alt="Image" onerror="this.src='http://dummyimage.com/120x160/ADADAD/e3e3e3';"/>
+                    <div class="caption span2">
+                        <h6>@Html.DisplayFor(modelItem => item.Title) </h6>
+                        @Html.DisplayFor(modelItem => item.Author) - $@Html.DisplayFor(modelItem => item.Price)
+                        <br />
+                        <br />
+                        <b>Condition:</b>
+                        @Html.DisplayFor(modelItem => item.Condition, new { @id = "bookCondition" })
+                    </div>
                 </div>
               </li></a>
             }
