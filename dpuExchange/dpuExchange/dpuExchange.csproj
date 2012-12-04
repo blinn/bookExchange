@@ -72,6 +72,7 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Books.cs" />
+    <Compile Include="Models\DetailsModel.cs" />
     <Compile Include="Models\EmailModel.cs" />
     <Compile Include="Models\MainModel.cs" />
     <Compile Include="Models\Searches.cs" />

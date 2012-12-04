@@ -45,8 +45,10 @@ namespace dpuExchange.Controllers
         [Authorize]
         public ViewResult Details(Guid id)
         {
-            Books books = db.BookItems.Find(id);
-            return View(books);
+            DetailsModel model = new DetailsModel();
+            model.AllBooks = db.BookItems.ToList();
+            model.Book = db.BookItems.Find(id);
+            return View(model);
         }
 
         //
