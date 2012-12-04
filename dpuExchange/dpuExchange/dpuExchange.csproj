@@ -73,7 +73,6 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Books.cs" />
     <Compile Include="Models\EmailModel.cs" />
-    <Compile Include="Models\IsbnResults.cs" />
     <Compile Include="Models\MainModel.cs" />
     <Compile Include="Models\Searches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

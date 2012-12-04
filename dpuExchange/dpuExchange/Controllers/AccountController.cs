@@ -26,6 +26,7 @@ namespace dpuExchange.Controllers
         [HttpPost]
         public ActionResult LogOn(LogOnModel model, string returnUrl)
         {
+            model.UserName = model.UserName.ToLower();
             if (ModelState.IsValid)
             {
                 if (Membership.ValidateUser(model.UserName, model.Password))
@@ -81,6 +82,7 @@ namespace dpuExchange.Controllers
                 model.Email = email;
                 // Attempt to register the user
                 MembershipCreateStatus createStatus;
+                model.UserName = model.UserName.ToLower();
                 Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
 
                 if (createStatus == MembershipCreateStatus.Success)
