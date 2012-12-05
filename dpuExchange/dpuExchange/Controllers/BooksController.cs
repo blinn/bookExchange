@@ -17,7 +17,7 @@ namespace dpuExchange.Controllers
     {
         private BooksDBContext db = new BooksDBContext();
 
-        //
+        // Returns Index.cshtml View
         // GET: /Books/
         public ActionResult Index(string param)
         {

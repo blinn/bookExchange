@@ -200,6 +200,7 @@
     <label>Showing <b id="numResult"></b> results that match "@stringTemp"</label>
 </div>
 <br />
+<!--- Displaying book items ----------->
 <ul class="thumbnails">
     @if (temp == "0" || temp==null)
     {
@@ -257,7 +258,6 @@
     });
     $('#sortem').click(function () {
         var dropText = $('#searchFilter option:selected').val()
-        //window.alert(dropText);
         var dfd = $.Deferred();
         window.location.href = '/Books/index?param=' + dropText;
     });

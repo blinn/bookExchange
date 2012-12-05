@@ -136,6 +136,10 @@
         </div>
     </div>
 </div>
+
+<!-------------------------------------------This is the begining of javascript functions--------------------------------------->
+<!------------------------------------Using xml2json.js to convert the returned xml to parsed json object----------------------->
+
 <script src="../../../Scripts/jquery.xml2json.js" type="text/javascript"></script>
 <script type="text/javascript">
     var $ = jQuery,
@@ -146,10 +150,13 @@
         var isbn = $("#BooksModel_Isbn").val();
         $("#imageLookup").attr("src", "http://covers.openlibrary.org/b/isbn/" + isbn + "-M.jpg?default=false");
     }
+    /* Updates book cover image on BooksModel_ISBN textbox change */
     $("#BooksModel_Isbn").change(function () {
         var isbn = $("#BooksModel_Isbn").val();
         $("#imageLookup").attr("src", "http://covers.openlibrary.org/b/isbn/" + isbn + "-M.jpg?default=false");
     });
+    /*Detects Isbn search button click. Calls Books/searchForISBN and dynamically appends results to view if controller action 
+    returns results. */
     $("#searchForISBN").click(function () {
         currentResult = 0;
         numResults = 0;
@@ -194,6 +201,7 @@
             }
         });
     });
+    /* Takes item's ISBN number and copies it to the create form */
     $(".use-this-btn").live('click', function () {
         var element = this.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling;
         var isbn = $(element).text();
@@ -201,6 +209,7 @@
         $("#BooksModel_Isbn").val(isbn);
         updateISBN();
     });
+    /* Dynamically appends all results found by ISBN lookup */
     function moreResults() {
         for (var x = currentResult; x <= numResults-1; x++) {
             $("#showMoreBtn").remove();

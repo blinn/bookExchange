@@ -22,7 +22,7 @@ namespace dpuExchange.Controllers
             return View(email);
         }
 
-        // Takes message parameters and sends email message
+        // Takes message parameters Seller, Sender, BookTitle, and Message and sends email message 
         public void Send(String Seller, String Sender, String BookTitle, String Message)
         {
             MailMessage message = new MailMessage();
