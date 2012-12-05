@@ -7,6 +7,8 @@ using System.Web.Routing;
 using System.Web.Security;
 using dpuExchange.Models;
 
+
+// Account Controller was created by the ASP.NET Internet Application Template starter code. 
 namespace dpuExchange.Controllers
 {
     public class AccountController : Controller
