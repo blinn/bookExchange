@@ -203,9 +203,13 @@
     });
     /* Takes item's ISBN number and copies it to the create form */
     $(".use-this-btn").live('click', function () {
-        var element = this.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling;
-        var isbn = $(element).text();
+        var element1 = this.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling;
+        var element2 = this.nextElementSibling.nextElementSibling;
+        var title = $(element2).text();
+        var isbn = $(element1).text();
         isbn = $.trim(isbn);
+        title = $.trim(title);
+        $("#BooksModel_Title").val(title);
         $("#BooksModel_Isbn").val(isbn);
         updateISBN();
     });

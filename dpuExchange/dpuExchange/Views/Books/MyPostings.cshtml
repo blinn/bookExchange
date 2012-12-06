@@ -4,8 +4,9 @@
 @{
     ViewBag.Title = "MyPostings";
     string stringTemp = "";
+    int counter = 0;
  }
-<h2>Manage Your Books</h2>
+<h2 id="books">Manage Your Books</h2>
 <br />
 <ul class="thumbnails">
 @foreach (var item in Model)
@@ -27,12 +28,19 @@
                     </div>
                 </div>
               </a></li>
+                counter++;
             }
         }
 </ul>
 <!-- javascript code that adds/removes "edit pencil" from book item ---->
 <script type="text/javascript">
     var $ = jQuery;
+    $(document).ready(function() {
+        if(@counter == 0)
+        {
+            $('#books').append('<br /><br /><p>You have no books to edit! </p>');
+        }
+        });
     $('li').mouseenter(function () {
         var test = $(this).find("i");
         $(test).css("display", "block");
